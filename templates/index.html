@@ -1,0 +1,52 @@
+<!-- Frontend Webpage for the app to communicate with the user.
+     The file is sent over in a post method and is processed for speech to text conversion.
+     Once the text is received, the div containing the result is displayed.
+     Author: Delzad Bamji    -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Transcribe an audio file</title>
+    <!--    google fonts import-->
+    <link rel="preconnect" href="https://fonts.gstatic.com"/>
+    <!--    title font-->
+    <link href="https://fonts.googleapis.com/css2?family=Yellowtail&display=swap" rel="stylesheet"/>
+    <!--    upload font-->
+    <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@300&display=swap" rel="stylesheet">
+    <!--    button-->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+          integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <!--    css file-->
+    <link rel="stylesheet" type="text/css" href="{{url_for('static',filename='styles/index.css')}}" />
+</head>
+<body>
+<div id="Container">
+    <div>
+        <h1 id="title"> Convert  Speech  to  Text</h1>
+        <div id="Content">
+            <div id="uploadModal">
+            <h2 id="upload">Upload here: </h2>
+            <form method="post" enctype="multipart/form-data">
+            <input type="file" name="file" id="file" />
+                <br>
+                <br>
+                <br>
+            <button type="submit"  id="submitButton" class="btn btn-primary btn-rounded btn-lg" value="Transcribe">
+                Transcribe
+            </button>
+            </form>
+            </div>
+            <br>
+        {% if transcript !="" %}
+            <div id="textContainer">
+                <h2>Audio Transcript:</h2>
+                <p id ="speechText" align="justify"> {{transcript}} </p>
+            </div>
+        {% endif %}
+        </div>
+
+    </div>
+</div>
+</body>
+</html>
